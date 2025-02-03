@@ -8,11 +8,11 @@ import iconProjects from '../assets/icons/projects-icon.png'
 import iconContact from '../assets/icons/contact-icon.png'
 
 // Reactive state to control mobile menu visibility
-const isOpen = ref(false)
+const isOpen = ref(false);
 
-function toggleMenu() {
-  isOpen.value = !isOpen.value
-}
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
 </script>
 
 <template>
@@ -67,15 +67,18 @@ function toggleMenu() {
           </div>
           <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconAbout" :width="32" alt="About Icon" extraClasses="mr-2"/>
-            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#about" @click="toggleMenu">About</a>
+            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#about"
+               @click="toggleMenu">About</a>
           </div>
           <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconProjects" :width="32" alt="Projects Icon" extraClasses="mr-2"/>
-            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#projects" @click="toggleMenu">Projects</a>
+            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#projects"
+               @click="toggleMenu">Projects</a>
           </div>
           <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconContact" :width="32" alt="Contact Icon" extraClasses="mr-2"/>
-            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#contact" @click="toggleMenu">Contact</a>
+            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#contact"
+               @click="toggleMenu">Contact</a>
           </div>
         </nav>
         <!-- Footer with Light Beam & Bulb Effect -->
@@ -112,25 +115,38 @@ function toggleMenu() {
   }
 }
 
-.nav-item {
-  opacity: 0;
-  animation: fadeSlide 0.5s ease forwards;
+aside {
+  background: rgba(25, 25, 25, 0.4); /* Darker glass */
+  backdrop-filter: blur(12px) saturate(150%);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.nav-item:nth-child(1) {
-  animation-delay: 0.1s;
+nav a {
+  position: relative;
+  padding: 8px 12px;
+  display: inline-block;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
 }
 
-.nav-item:nth-child(2) {
-  animation-delay: 0.2s;
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #facc15, transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
 }
 
-.nav-item:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.nav-item:nth-child(4) {
-  animation-delay: 0.4s;
+nav a:hover::after,
+nav a:focus::after {
+  transform: scaleX(1);
 }
 
 /* Footer styling in the sidebar */
@@ -139,68 +155,96 @@ function toggleMenu() {
   height: 50%; /* Occupies the bottom half of the sidebar */
 }
 
-/* Light Container to hold both the bulb and beam */
-.light-container {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Light Bulb (the source of light) */
+/* ————————————————————————————————————————————————
+   Light Bulb
+   — A smaller, subtler glow, with a gentle flicker
+   ———————————————————————————————————————————————— */
 .light-bulb {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, #facc15 60%, transparent 70%);
+  width: 40px;
+  height: 40px;
+  /* A smoother gradient for the bulb glow */
+  background: radial-gradient(circle at center, #facc15 55%, transparent 75%);
   border-radius: 50%;
-  box-shadow: 0 0 30px 10px rgba(250, 204, 21, 0.8);
-  animation: bulbPulse 3s ease-in-out infinite;
+  /* A bit of a glow "halo" around the bulb */
+  box-shadow: 0 0 20px 8px rgba(250, 204, 21, 0.6);
+  animation: bulbFlicker 3s infinite steps(20, end);
   z-index: 2;
 }
 
-/* Light Beam (the spreading light) */
+/* ————————————————————————————————————————————————
+   Light Beam
+   — A mild upward gradient that tapers out
+   ———————————————————————————————————————————————— */
 .light-beam {
   position: absolute;
-  bottom: 25px; /* Start just above the bulb */
+  bottom: 35px; /* Start just above the bulb */
   left: 50%;
   transform: translateX(-50%);
-  width: 200px; /* Wider beam */
-  height: 100%; /* Extend upward through the footer */
-  background: linear-gradient(to top, rgba(250, 204, 21, 0.7), transparent);
-  filter: blur(50px);
+  /* Use a radial gradient as the beam,
+     or you could use clip-path to create a true cone shape. */
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+      circle at 50% 100%,
+      rgba(250, 204, 21, 0.35),
+      rgba(250, 204, 21, 0.07),
+      transparent 80%
+  );
+  /* Soften edges with blur plus reduced opacity */
+  filter: blur(25px);
   opacity: 0.8;
-  animation: beamPulse 3s ease-in-out infinite;
+  animation: beamPulse 5s ease-in-out infinite;
   z-index: 1;
 }
 
-/* Bulb pulse animation */
-@keyframes bulbPulse {
+/* ————————————————————————————————————————————————
+   Subtle Flicker (Bulb)
+   — Randomized changes in opacity mimic a flicker
+   — “steps(20, end)” keeps the flicker from being too smooth
+   ———————————————————————————————————————————————— */
+@keyframes bulbFlicker {
+  0% {
+    opacity: 0.90;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.95;
+  }
+  30% {
+    opacity: 0.98;
+  }
+  50% {
+    opacity: 0.87;
+  }
+  65% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.92;
+  }
+  100% {
+    opacity: 0.95;
+  }
+}
+
+/* ————————————————————————————————————————————————
+   Gentle Breathing Pulse (Beam)
+   — Slowly “breathes” in and out over 5s
+   ———————————————————————————————————————————————— */
+@keyframes beamPulse {
   0%, 100% {
     transform: translateX(-50%) scale(1);
-    opacity: 0.9;
+    opacity: 0.8;
   }
   50% {
     transform: translateX(-50%) scale(1.1);
     opacity: 1;
-  }
-}
-
-/* Beam pulse animation */
-@keyframes beamPulse {
-  0%, 100% {
-    opacity: 0.8;
-    transform: translateX(-50%) scaleY(0.95);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) scaleY(1.05);
   }
 }
 </style>
