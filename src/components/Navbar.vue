@@ -18,9 +18,7 @@ const toggleMenu = () => {
 <template>
   <!-- Fixed Top Navigation Bar -->
   <nav
-      class="bg-gray-900 text-white px-4 py-3 flex items-center justify-between fixed top-0 left-0 w-full z-50 shadow-md">
-    <!-- Branding -->
-    <div class="text-xl font-bold">[Your Name]</div>
+      class="navbar bg-gray-900 text-white px-4 py-3 flex items-center justify-between fixed top-0 left-0 w-full z-50 shadow-md">
     <!-- Desktop Menu: Hidden on small screens -->
     <div class="hidden md:flex space-x-6">
       <a class="hover:text-yellow-500 transition duration-200" href="#home">Home</a>
@@ -48,17 +46,7 @@ const toggleMenu = () => {
       <div class="fixed inset-0 bg-black opacity-50" @click="toggleMenu"></div>
       <!-- Sidebar -->
       <aside class="relative bg-gray-900 text-white w-64 h-full p-6 overflow-y-auto flex flex-col">
-        <div class="flex items-center justify-between mb-8">
-          <span class="text-xl font-bold">Navigation</span>
-          <button aria-label="Close menu"
-                  class="focus:outline-none text-gray-400 hover:text-yellow-500 transition duration-200"
-                  @click="toggleMenu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-            </svg>
-          </button>
-        </div>
-        <nav class="space-y-4">
+        <nav class="menu-list space-y-4">
           <!-- Navigation items with animated appearance -->
           <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconHome" :width="32" alt="Home Icon" extraClasses="mr-2"/>
@@ -122,6 +110,15 @@ aside {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.navbar {
+  background: rgba(25, 25, 25, 0.4); /* Darker glass */
+  backdrop-filter: blur(12px) saturate(150%);
+}
+
+.menu-list {
+  margin-top: 25%;
 }
 
 nav a {
