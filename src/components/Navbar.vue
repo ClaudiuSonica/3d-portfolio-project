@@ -1,20 +1,3 @@
-<!-- src/components/Navbar.vue -->
-<script lang="ts" setup>
-import {ref} from 'vue'
-import StaticIcon from './StaticIcon.vue'
-import iconHome from '../assets/icons/home-icon.png'
-import iconAbout from '../assets/icons/about-icon.png'
-import iconProjects from '../assets/icons/projects-icon.png'
-import iconContact from '../assets/icons/contact-icon.png'
-
-// Reactive state to control mobile menu visibility
-const isOpen = ref(false);
-
-const toggleMenu = () => {
-  isOpen.value = !isOpen.value;
-};
-</script>
-
 <template>
   <!-- Fixed Top Navigation Bar -->
   <nav
@@ -80,6 +63,22 @@ const toggleMenu = () => {
     </div>
   </transition>
 </template>
+
+<script lang="ts" setup>
+import {ref} from 'vue'
+import StaticIcon from './StaticIcon.vue'
+import iconHome from '../assets/icons/home-icon.png'
+import iconAbout from '../assets/icons/about-icon.png'
+import iconProjects from '../assets/icons/projects-icon.png'
+import iconContact from '../assets/icons/contact-icon.png'
+
+// Reactive state to control mobile menu visibility
+const isOpen = ref(false);
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
+</script>
 
 <style scoped>
 /* Slide transition for the mobile sidebar */

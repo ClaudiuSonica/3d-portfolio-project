@@ -1,49 +1,3 @@
-<script lang="ts" setup>
-import {onMounted, ref} from 'vue';
-import bgImage from '../assets/background/parallax-bg.jpg';
-
-const isVisible = ref(false);
-const particles = ref([]);
-const categories = [
-  ["Innovative Thinker", "Problem Solver", "Detail-Oriented"],
-  ["Curious by Nature", "Passionate About Tech", "Constant Learner"],
-  ["Driven to Improve", "Creative & Logical", "Adaptable & Resilient"]
-];
-
-const currentCategoryIndex = ref(0);
-const currentWordIndex = ref(0);
-const displayedText = ref(categories[0][0]);
-
-// Function to change words dynamically
-const updateText = () => {
-  const currentCategory = categories[currentCategoryIndex.value];
-  currentWordIndex.value = (currentWordIndex.value + 1) % currentCategory.length;
-  displayedText.value = currentCategory[currentWordIndex.value];
-
-  // If we've cycled through all words in a category, switch categories
-  if (currentWordIndex.value === 0) {
-    currentCategoryIndex.value = (currentCategoryIndex.value + 1) % categories.length;
-  }
-};
-
-onMounted(() => {
-  isVisible.value = true;
-
-  // Generate dynamic particles
-  for (let i = 0; i < 50; i++) {
-    particles.value.push({
-      id: i,
-      top: Math.random() * 100 + '%',
-      left: Math.random() * 100 + '%',
-      size: Math.random() * 6 + 3 + 'px', // Random size between 3px - 9px
-      duration: Math.random() * 4 + 3 + 's', // Different animation speeds
-    });
-  }
-
-  setInterval(updateText, 2500);
-});
-</script>
-
 <template>
   <section
       class="hero-section min-h-screen flex flex-col justify-center items-center text-white p-6 relative overflow-hidden">
@@ -91,6 +45,52 @@ onMounted(() => {
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import {onMounted, ref} from 'vue';
+import bgImage from '../assets/background/parallax-bg.jpg';
+
+const isVisible = ref(false);
+const particles = ref([]);
+const categories = [
+  ["Innovative Thinker", "Problem Solver", "Detail-Oriented"],
+  ["Curious by Nature", "Passionate About Tech", "Constant Learner"],
+  ["Driven to Improve", "Creative & Logical", "Adaptable & Resilient"]
+];
+
+const currentCategoryIndex = ref(0);
+const currentWordIndex = ref(0);
+const displayedText = ref(categories[0][0]);
+
+// Function to change words dynamically
+const updateText = () => {
+  const currentCategory = categories[currentCategoryIndex.value];
+  currentWordIndex.value = (currentWordIndex.value + 1) % currentCategory.length;
+  displayedText.value = currentCategory[currentWordIndex.value];
+
+  // If we've cycled through all words in a category, switch categories
+  if (currentWordIndex.value === 0) {
+    currentCategoryIndex.value = (currentCategoryIndex.value + 1) % categories.length;
+  }
+};
+
+onMounted(() => {
+  isVisible.value = true;
+
+  // Generate dynamic particles
+  for (let i = 0; i < 50; i++) {
+    particles.value.push({
+      id: i,
+      top: Math.random() * 100 + '%',
+      left: Math.random() * 100 + '%',
+      size: Math.random() * 6 + 3 + 'px', // Random size between 3px - 9px
+      duration: Math.random() * 4 + 3 + 's', // Different animation speeds
+    });
+  }
+
+  setInterval(updateText, 2500);
+});
+</script>
 
 <style scoped>
 /* ————————————————————————————————————————————————
