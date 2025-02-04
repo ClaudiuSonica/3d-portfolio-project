@@ -4,6 +4,27 @@ import bgImage from '../assets/background/parallax-bg.jpg';
 
 const isVisible = ref(false);
 const particles = ref([]);
+const categories = [
+  ["Innovative Thinker", "Problem Solver", "Detail-Oriented"],
+  ["Curious by Nature", "Passionate About Tech", "Constant Learner"],
+  ["Driven to Improve", "Creative & Logical", "Adaptable & Resilient"]
+];
+
+const currentCategoryIndex = ref(0);
+const currentWordIndex = ref(0);
+const displayedText = ref(categories[0][0]);
+
+// Function to change words dynamically
+const updateText = () => {
+  const currentCategory = categories[currentCategoryIndex.value];
+  currentWordIndex.value = (currentWordIndex.value + 1) % currentCategory.length;
+  displayedText.value = currentCategory[currentWordIndex.value];
+
+  // If we've cycled through all words in a category, switch categories
+  if (currentWordIndex.value === 0) {
+    currentCategoryIndex.value = (currentCategoryIndex.value + 1) % categories.length;
+  }
+};
 
 onMounted(() => {
   isVisible.value = true;
@@ -18,6 +39,8 @@ onMounted(() => {
       duration: Math.random() * 4 + 3 + 's', // Different animation speeds
     });
   }
+
+  setInterval(updateText, 2500);
 });
 </script>
 
@@ -56,9 +79,8 @@ onMounted(() => {
       </h2>
     </div>
 
-    <p :class="{ 'opacity-100': isVisible }"
-       class="text-lg text-gray-300 mt-4 mb-6 opacity-0 transition-opacity duration-700 delay-400">
-      Full-Stack Developer | Crafting modern, scalable web solutions.
+    <p class="text-lg text-gray-300 mt-4 mb-6 text-morph">
+      <span :key="displayedText">{{ displayedText }}</span>
     </p>
 
     <!-- CTA Buttons -->
@@ -83,6 +105,52 @@ onMounted(() => {
 /* Darkened Background Overlay */
 .bg-cover {
   filter: brightness(30%); /* Darkens image without losing detail */
+}
+
+/* ————————————————————————————————————————————————
+   🔥 Dynamic Morphing Text Animation
+   ———————————————————————————————————————————————— */
+.text-morph {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  height: 1.5em; /* Prevents layout shift */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%; /* Prevents line breaks */
+  max-width: 320px; /* Ensures proper fitting */
+  white-space: nowrap; /* Prevents wrapping */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ensures words fade in/out smoothly */
+.text-morph span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  animation: fadeInOut 2.5s ease-in-out infinite;
+}
+
+/* Keyframe to fade in, hold, then fade out */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
 }
 
 /* ————————————————————————————————————————————————
