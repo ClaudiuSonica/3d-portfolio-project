@@ -1,5 +1,6 @@
 <template>
-  <section class="projects-section py-12 px-6 text-white">
+  <section id="projects" class="projects-section py-12 px-6 text-white">
+    <ParticleEffect/>
 
     <!--    &lt;!&ndash; Work Projects &ndash;&gt;-->
     <!--    <h2 class="text-3xl font-bold text-center mb-8">💼 Work Projects</h2>-->
@@ -21,6 +22,7 @@
 <script lang="ts" setup>
 import {useProjects} from '../composable/useProjects';
 import ProjectCard from "./ProjectCard.vue";
+import ParticleEffect from "./ParticleEffect.vue";
 
 // 🔥 Fetch projects using the composable
 const {githubProjects} = useProjects();
@@ -28,6 +30,7 @@ const {githubProjects} = useProjects();
 
 <style scoped>
 .projects-section {
-  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  background: rgba(0, 0, 0, 1);
 }
 </style>

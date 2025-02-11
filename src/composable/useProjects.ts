@@ -1,35 +1,16 @@
 // @ts-ignore
-import {onMounted, ref} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 // @ts-ignore
 import axios from "axios";
 
 // 🔥 GitHub Credentials
 const GITHUB_USERNAME: string = "ClaudiuSonica";
 // @ts-ignore
-const SCREENSHOT_API_KEY = import.meta.env.VITE_SCREENSHOT_API_KEY || ""; // ✅ Get API Key from .env
 const GITHUB_API_URL = `https://api.github.com/search/repositories?q=topic:portfolio+user:${GITHUB_USERNAME}`;
+
 
 export function useProjects() {
     const githubProjects = ref([]);
-
-    // ✅ Function to Fetch Screenshot
-    const getScreenshot = async (url: string): Promise<string | null> => {
-        try {
-            const response = await axios.get(`https://shot.screenshotapi.net/screenshot`, {
-                params: {
-                    token: SCREENSHOT_API_KEY,
-                    url,
-                    output: "json",
-                    file_type: "png"
-                }
-            });
-
-            return response.data.screenshot || null;
-        } catch (error) {
-            console.error("Failed to fetch screenshot for:", url, error);
-            return null;
-        }
-    };
 
     // 🔥 Fetch GitHub Projects
     const fetchGitHubProjects = async () => {
@@ -44,23 +25,24 @@ export function useProjects() {
                         description: string;
                         topics: string[];
                         homepage: string;
-                        html_url: string
+                        html_url: string;
                     }) => {
                         // ✅ Default Image: OpenGraph
                         let image = `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`;
 
-                        // ✅ If homepage exists, try using Screenshot API
-                        if (repo.homepage && SCREENSHOT_API_KEY) {
-                            const screenshot = await getScreenshot(repo.homepage);
-                            if (screenshot) {
-                                image = screenshot; // ✅ Update image if screenshot is available
-                            }
-                        }
+                        const formatTitle = (title: string): string => {
+                            return title
+                                .replace(/[-_]/g, " ")      // Replace hyphens or underscores with spaces
+                                .replace(/\s+/g, " ")       // Remove duplicate spaces if any
+                                .split(" ")                // Split into words
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+                                .join(" ");
+                        };
 
                         return {
-                            title: repo.name.replace(/-/g, " "),
+                            title: formatTitle(repo.name),
                             description: repo.description || "No description available.",
-                            tech: repo.topics || [],
+                            tech: (repo.topics || []).filter((topic: string) => topic.toLowerCase() !== "portfolio"),
                             image, // ✅ Uses Screenshot API first, falls back to OpenGraph
                             live: repo.homepage || null,
                             repo: repo.html_url
@@ -68,11 +50,16 @@ export function useProjects() {
                     })
             );
         } catch (error) {
-            console.error("Failed to fetch GitHub projects:", error);
+            // Check if the error is due to a canceled request
+            if (axios.isCancel(error)) {
+                console.log("GitHub projects request canceled");
+            } else {
+                console.error("Failed to fetch GitHub projects:", error);
+            }
         }
     };
 
-    // Run function on mount
+    // Run function on mount and clean up on unmount to cancel pending requests
     onMounted(fetchGitHubProjects);
 
     return {githubProjects};
