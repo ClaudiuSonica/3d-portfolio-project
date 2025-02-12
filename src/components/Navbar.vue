@@ -37,14 +37,14 @@
                @click="toggleMenu">Home</a>
           </div>
           <div class="flex items-center nav-item">
-            <StaticIcon :height="32" :src="iconAbout" :width="32" alt="About Icon" extraClasses="mr-2"/>
-            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#about"
-               @click="toggleMenu">About</a>
-          </div>
-          <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconProjects" :width="32" alt="Projects Icon" extraClasses="mr-2"/>
             <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#projects"
                @click="toggleMenu">Projects</a>
+          </div>
+          <div class="flex items-center nav-item">
+            <StaticIcon :height="32" :src="iconAbout" :width="32" alt="About Icon" extraClasses="mr-2"/>
+            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#about"
+               @click="toggleMenu">About</a>
           </div>
           <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconContact" :width="32" alt="Contact Icon" extraClasses="mr-2"/>
