@@ -1,51 +1,6 @@
-<script lang="ts" setup>
-import {onMounted, ref} from 'vue';
-import bgImage from '../assets/background/parallax-bg.jpg';
-
-const isVisible = ref(false);
-const particles = ref([]);
-const categories = [
-  ["Innovative Thinker", "Problem Solver", "Detail-Oriented"],
-  ["Curious by Nature", "Passionate About Tech", "Constant Learner"],
-  ["Driven to Improve", "Creative & Logical", "Adaptable & Resilient"]
-];
-
-const currentCategoryIndex = ref(0);
-const currentWordIndex = ref(0);
-const displayedText = ref(categories[0][0]);
-
-// Function to change words dynamically
-const updateText = () => {
-  const currentCategory = categories[currentCategoryIndex.value];
-  currentWordIndex.value = (currentWordIndex.value + 1) % currentCategory.length;
-  displayedText.value = currentCategory[currentWordIndex.value];
-
-  // If we've cycled through all words in a category, switch categories
-  if (currentWordIndex.value === 0) {
-    currentCategoryIndex.value = (currentCategoryIndex.value + 1) % categories.length;
-  }
-};
-
-onMounted(() => {
-  isVisible.value = true;
-
-  // Generate dynamic particles
-  for (let i = 0; i < 50; i++) {
-    particles.value.push({
-      id: i,
-      top: Math.random() * 100 + '%',
-      left: Math.random() * 100 + '%',
-      size: Math.random() * 6 + 3 + 'px', // Random size between 3px - 9px
-      duration: Math.random() * 4 + 3 + 's', // Different animation speeds
-    });
-  }
-
-  setInterval(updateText, 2500);
-});
-</script>
-
 <template>
   <section
+      id="home"
       class="hero-section min-h-screen flex flex-col justify-center items-center text-white p-6 relative overflow-hidden">
 
     <!-- Parallax Background with Darkened Overlay -->
@@ -53,19 +8,7 @@ onMounted(() => {
          class="absolute inset-0 bg-cover bg-center brightness-50">
     </div>
 
-    <!-- Floating Particles -->
-    <div class="floating-particles">
-      <span v-for="particle in particles" :key="particle.id"
-            :style="{
-              top: particle.top,
-              left: particle.left,
-              width: particle.size,
-              height: particle.size,
-              animationDuration: particle.duration,
-            }"
-            class="particle">
-      </span>
-    </div>
+    <ParticleEffect/>
 
     <!-- Name & Title -->
     <div class="text-center">
@@ -91,6 +34,41 @@ onMounted(() => {
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import {onMounted, ref} from 'vue';
+import bgImage from '../assets/background/parallax-bg.jpg';
+import ParticleEffect from "./ParticleEffect.vue";
+
+const isVisible = ref(false);
+const categories = [
+  ["Innovative Thinker", "Problem Solver", "Detail-Oriented"],
+  ["Curious by Nature", "Passionate About Tech", "Constant Learner"],
+  ["Driven to Improve", "Creative & Logical", "Adaptable & Resilient"]
+];
+
+const currentCategoryIndex = ref(0);
+const currentWordIndex = ref(0);
+const displayedText = ref(categories[0][0]);
+
+// Function to change words dynamically
+const updateText = () => {
+  const currentCategory = categories[currentCategoryIndex.value];
+  currentWordIndex.value = (currentWordIndex.value + 1) % currentCategory.length;
+  displayedText.value = currentCategory[currentWordIndex.value];
+
+  // If we've cycled through all words in a category, switch categories
+  if (currentWordIndex.value === 0) {
+    currentCategoryIndex.value = (currentCategoryIndex.value + 1) % categories.length;
+  }
+};
+
+onMounted(() => {
+  isVisible.value = true;
+
+  setInterval(updateText, 2500);
+});
+</script>
 
 <style scoped>
 /* ————————————————————————————————————————————————
@@ -154,37 +132,6 @@ onMounted(() => {
 }
 
 /* ————————————————————————————————————————————————
-   ✨ Floating Particles (Dynamic & Interactive)
-   ———————————————————————————————————————————————— */
-.floating-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.particle {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  animation: float infinite ease-in-out alternate;
-}
-
-/* Floating Effect */
-@keyframes float {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translateY(-15px) scale(1.1);
-    opacity: 1;
-  }
-}
-
-/* ————————————————————————————————————————————————
    ✨ Text Appearance Animation
    ———————————————————————————————————————————————— */
 h1, h2 {
@@ -194,73 +141,5 @@ h1, h2 {
 
 h1.opacity-100, h2.opacity-100 {
   transform: translateY(0);
-}
-
-/* ————————————————————————————————————————————————
-   ⚡️ CTA Buttons (Enhanced for Mobile)
-   ———————————————————————————————————————————————— */
-.cta-button {
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 14px 24px;
-  border-radius: 8px;
-  background: linear-gradient(to right, #facc15, #ff9800);
-  color: #222;
-  box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Button Tap Interaction */
-.cta-button:active {
-  transform: scale(0.97);
-  box-shadow: 0 2px 5px rgba(255, 165, 0, 0.3);
-}
-
-/* Subtle Glow Effect on Idle */
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
-  }
-  50% {
-    box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
-  }
-}
-
-.cta-button {
-  animation: glowPulse 3s infinite alternate;
-}
-
-/* Secondary Button */
-.cta-button.secondary {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  color: white;
-}
-
-.cta-button.secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: white;
-}
-
-/* Ripple Effect */
-.cta-button::after {
-  content: "";
-  position: absolute;
-  background: rgba(255, 255, 255, 0.5);
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  border-radius: 50%;
-  opacity: 0;
-  transition: transform 0.4s, opacity 0.4s;
-}
-
-.cta-button:active::after {
-  transform: translate(-50%, -50%) scale(2);
-  opacity: 0.2;
 }
 </style>

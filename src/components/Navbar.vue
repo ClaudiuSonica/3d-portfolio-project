@@ -1,20 +1,3 @@
-<!-- src/components/Navbar.vue -->
-<script lang="ts" setup>
-import {ref} from 'vue'
-import StaticIcon from './StaticIcon.vue'
-import iconHome from '../assets/icons/home-icon.png'
-import iconAbout from '../assets/icons/about-icon.png'
-import iconProjects from '../assets/icons/projects-icon.png'
-import iconContact from '../assets/icons/contact-icon.png'
-
-// Reactive state to control mobile menu visibility
-const isOpen = ref(false);
-
-const toggleMenu = () => {
-  isOpen.value = !isOpen.value;
-};
-</script>
-
 <template>
   <!-- Fixed Top Navigation Bar -->
   <nav
@@ -54,14 +37,14 @@ const toggleMenu = () => {
                @click="toggleMenu">Home</a>
           </div>
           <div class="flex items-center nav-item">
-            <StaticIcon :height="32" :src="iconAbout" :width="32" alt="About Icon" extraClasses="mr-2"/>
-            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#about"
-               @click="toggleMenu">About</a>
-          </div>
-          <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconProjects" :width="32" alt="Projects Icon" extraClasses="mr-2"/>
             <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#projects"
                @click="toggleMenu">Projects</a>
+          </div>
+          <div class="flex items-center nav-item">
+            <StaticIcon :height="32" :src="iconAbout" :width="32" alt="About Icon" extraClasses="mr-2"/>
+            <a class="block text-lg hover:text-yellow-500 transition duration-200" href="#about"
+               @click="toggleMenu">About</a>
           </div>
           <div class="flex items-center nav-item">
             <StaticIcon :height="32" :src="iconContact" :width="32" alt="Contact Icon" extraClasses="mr-2"/>
@@ -80,6 +63,22 @@ const toggleMenu = () => {
     </div>
   </transition>
 </template>
+
+<script lang="ts" setup>
+import {ref} from 'vue'
+import StaticIcon from './StaticIcon.vue'
+import iconHome from '../assets/icons/home-icon.png'
+import iconAbout from '../assets/icons/about-icon.png'
+import iconProjects from '../assets/icons/projects-icon.png'
+import iconContact from '../assets/icons/contact-icon.png'
+
+// Reactive state to control mobile menu visibility
+const isOpen = ref(false);
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
+</script>
 
 <style scoped>
 /* Slide transition for the mobile sidebar */
