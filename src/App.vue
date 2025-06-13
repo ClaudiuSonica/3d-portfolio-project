@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Home/>
+    <ThreeScene/>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Home from './views/Home.vue'
+import ThreeScene from './components/ThreeScene.vue'
 </script>
