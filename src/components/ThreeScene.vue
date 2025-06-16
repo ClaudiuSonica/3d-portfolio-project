@@ -7,7 +7,6 @@
     <div class="navigation-ui">
       <div class="section-indicator">{{ currentPlanet || 'Solar System' }}</div>
       <div class="controls-help">
-        <p>Use arrow keys to navigate</p>
         <p>Mouse drag to look around</p>
         <p>Click on planets to explore</p>
       </div>
@@ -43,6 +42,7 @@
                 <li>React</li>
                 <li>HTML5/CSS3</li>
                 <li>Tailwind CSS</li>
+                <li>Bootstrap</li>
               </ul>
             </div>
             <div class="skill-category">
@@ -61,6 +61,7 @@
                 <li>Docker</li>
                 <li>Three.js</li>
                 <li>Responsive Design</li>
+                <li>Postman</li>
               </ul>
             </div>
           </div>
@@ -75,7 +76,14 @@
           <p>Today, I blend creativity with technical prowess to build solutions that are both functional and
             delightful.</p>
           <div class="about-links">
-            <a class="about-link" href="#">Download CV</a>
+            <a
+                class="about-link"
+                download="ClaudiuSonica_CV.pdf"
+                href="/files/ClaudiuSonicaCv.pdf"
+            >
+              Download CV
+            </a>
+
             <a class="about-link" href="https://github.com/ClaudiuSonica" target="_blank">GitHub</a>
             <a class="about-link" href="https://www.linkedin.com/in/claudiu-sonica-395aab218/"
                target="_blank">LinkedIn</a>
@@ -85,42 +93,112 @@
           <h3>Featured Projects</h3>
           <div class="projects-grid">
             <div class="project-card">
-              <h4>Portfolio Website</h4>
-              <p>Interactive 3D portfolio website built with Vue.js and Three.js</p>
+              <h4>Einsys.eu</h4>
+              <p>A turnkey web application for managing transport bids and back-office workflows. Features a built-in
+                CRM for invoice generation, seamless integration with Xero & QuickBooks, Kanban-style task boards for
+                operations, and an interactive map view to monitor driver routes and shipments in real time.
+              </p>
               <div class="project-tags">
-                <span>Vue.js</span>
-                <span>Three.js</span>
-                <span>TypeScript</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank">Live Demo</a>
-                <a href="#" target="_blank">GitHub</a>
-              </div>
-            </div>
-            <div class="project-card">
-              <h4>E-Commerce Platform</h4>
-              <p>Full-featured online store with product management and payment processing</p>
-              <div class="project-tags">
-                <span>Laravel</span>
-                <span>Vue.js</span>
+                <span>Laravel 10</span>
                 <span>MySQL</span>
+                <span>Javascript</span>
+                <span>Bootstrap</span>
+                <span>Docker</span>
               </div>
               <div class="project-links">
-                <a href="#" target="_blank">Live Demo</a>
-                <a href="#" target="_blank">GitHub</a>
+                <a href="https://go.einsys.eu/" target="_blank">Live Demo</a>
               </div>
             </div>
             <div class="project-card">
-              <h4>Task Management App</h4>
-              <p>Collaborative task management application with real-time updates</p>
+              <h4>Wipest LandingPage</h4>
+              <p>A polished marketing site for a smart pest-control service, complete with service overviews and
+                pricing. Behind the scenes, it includes a custom CRM to capture leads, schedule appointments, and follow
+                up with clients—turning every site visit into a potential booking.
+              </p>
               <div class="project-tags">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>MongoDB</span>
+                <span>Laravel 10</span>
+                <span>Blade</span>
+                <span>MySQL</span>
+                <span>Docker</span>
               </div>
               <div class="project-links">
-                <a href="#" target="_blank">Live Demo</a>
-                <a href="#" target="_blank">GitHub</a>
+                <a href="https://sdk-web.stage.hypen.ro/" target="_blank">Live Demo</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>Wipest Dashboard</h4>
+              <p>An analytics-driven control center delivering live metrics and actionable insights for ULE, NB-IoT, and
+                LoRaWAN devices. Automatically spins up Kanban tasks based on sensor data, plots optimized field routes
+                on a map, and updates box status in real time. Includes an internal storefront for ordering devices and
+                consumables, plus a fully automated reporting & invoicing engine tied to a REST API backend that also
+                powers mobile-app device actions (install, remove, firmware updates, battery changes, and more).
+              </p>
+              <div class="project-tags">
+                <span>Laravel 10</span>
+                <span>Blade</span>
+                <span>MySQL</span>
+                <span>Docker</span>
+                <span>Postman</span>
+                <span>REST API</span>
+                <span>Stripe</span>
+              </div>
+              <div class="project-links">
+                <a href="https://stage.sdk-dashboard.hypen.ro/" target="_blank">Live Demo</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>Volunteers Factory</h4>
+              <p>A centralized portal for volunteer coordination: assign and track tasks with deadlines, award
+                achievement badges and certificates automatically, and generate on-demand reports. Built-in analytics
+                reveal engagement trends and project impact, helping nonprofits recognize contributions and streamline
+                their outreach.</p>
+              <div class="project-tags">
+                <span>Laravel 10</span>
+                <span>Blade</span>
+                <span>MySQL</span>
+                <span>Docker</span>
+              </div>
+              <div class="project-links">
+                <a href="https://volunteersfactory.ro/" target="_blank">Live Demo</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>Hand of Help</h4>
+              <p>The official site for the Hand of Help Foundation, connecting donors and volunteers with social
+                programs in Botoșani. Prominent “Donează Acum” buttons simplify online giving, while dedicated sign-up
+                forms recruit mentors and volunteers. Detailed project pages showcase initiatives—from youth camps to
+                family support—and transparent reporting highlights real-world outcomes.</p>
+              <div class="project-tags">
+                <span>Laravel 10</span>
+                <span>Blade</span>
+                <span>MySQL</span>
+                <span>Docker</span>
+              </div>
+              <div class="project-links">
+                <a href="https://handofhelp.ro/" target="_blank">Live Demo</a>
+              </div>
+            </div>
+            <div class="project-card">
+              <h4>Timvo</h4>
+              <p>An all-in-one business hub for Belgian freelancers and small teams. Log hours with one-click timers,
+                manage tasks and Gantt charts, then dispatch Peppol-compliant e-invoices automatically. Built-in
+                bookkeeping dashboards, receipt scanning, and accountant exports keep finances tidy. Invite teammates,
+                validate timesheets, and integrate via REST API or popular CRM and payment tools—so you spend less time
+                on admin and more on growing your business.
+              </p>
+              <div class="project-tags">
+                <span>Laravel 10</span>
+                <span>Javascript</span>
+                <span>Blade</span>
+                <span>MySQL</span>
+                <span>Docker</span>
+                <span>Postman</span>
+                <span>REST API</span>
+                <span>Stripe</span>
+                <span>Peppol</span>
+              </div>
+              <div class="project-links">
+                <a href="https://stage.timvo.hypen.ro/" target="_blank">Live Demo</a>
               </div>
             </div>
           </div>
@@ -259,7 +337,8 @@ const planetData = [
     color: 0xE5E5E5,
     speed: 0.01,
     tilt: 0.034,
-    texturePath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/mercury.jpg',
+    texturePath: '/textures/planets/mercury.jpg',
+    bumpPath: '/textures/planets/mercury-bump.jpg',
     bumpScale: 0.002,
     hasAtmosphere: false
   },
@@ -270,7 +349,8 @@ const planetData = [
     color: 0xF5DEB3,
     speed: 0.007,
     tilt: 0.001,
-    texturePath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/venus.jpg',
+    texturePath: '/textures/planets/venus.jpg',
+    bumpPath: '/textures/planets/venus-bump.jpg',
     bumpScale: 0.005,
     hasAtmosphere: true,
     atmosphereColor: 0xf9d71c,
@@ -283,14 +363,14 @@ const planetData = [
     color: 0x6B93D6,
     speed: 0.005,
     tilt: 0.41,
-    texturePath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg',
-    bumpPath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_normal_2048.jpg',
-    specularPath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_specular_2048.jpg',
+    texturePath: '/textures/planets/earth.jpg',
+    bumpPath: '/textures/planets/earth-bump.jpg',
+    specularPath: '/textures/planets/earth-specular.jpg',
+    cloudPath: '/textures/planets/earth-clouds.jpg',
     bumpScale: 0.05,
     hasAtmosphere: true,
     atmosphereColor: 0x001eff,
     atmosphereOpacity: 0.1,
-    cloudPath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_clouds_1024.png'
   },
   {
     name: 'Mars',
@@ -299,7 +379,8 @@ const planetData = [
     color: 0xE27B58,
     speed: 0.003,
     tilt: 0.44,
-    texturePath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/mars.jpg',
+    texturePath: '/textures/planets/mars.jpg',
+    bumpPath: '/textures/planets/mars-bump.jpg',
     bumpScale: 0.01,
     hasAtmosphere: false
   },
@@ -310,7 +391,7 @@ const planetData = [
     color: 0xC88B3A,
     speed: 0.002,
     tilt: 0.05,
-    texturePath: 'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/jupiter.jpg',
+    texturePath: '/textures/planets/jupiter.jpg',
     bumpScale: 0.02,
     hasAtmosphere: false
   }
@@ -469,58 +550,39 @@ const createSun = () => {
     // Load sun texture with error handling
     try {
       const sunTexture = textureLoader.load(
-          'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/sun.jpg',
-          // Success callback
-          (texture) => {
-            console.log('Sun texture loaded successfully');
-            // Enhance texture settings
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapT = THREE.RepeatWrapping;
-
-            // Update material if it exists
-            if (sun && sun.material) {
-              sun.material.map = texture;
-              sun.material.needsUpdate = true;
-            }
-          },
-          // Progress callback
+          '/textures/planets/sun.jpg',
+          () => console.log('Sun texture loaded!'),
           undefined,
-          // Error callback
-          (err) => {
-            console.error('Error loading sun texture:', err);
-            // Fallback to basic material on error
-            if (sun) {
-              sun.material = new THREE.MeshBasicMaterial({
-                color: 0xFFA500,
-                emissive: 0xFFA500,
-                emissiveIntensity: 1
-              });
-              sun.material.needsUpdate = true;
-            }
-          }
+          err => console.error('Sun load error', err)
       );
 
       // Create enhanced material with emissive map for glow effect
-      sunMaterial = new THREE.MeshBasicMaterial({
+      sunMaterial = new THREE.MeshStandardMaterial({
         color: 0xFFA500,
         emissive: 0xFFA500,
-        emissiveIntensity: 1.2
+        emissiveIntensity: 1.2,
+        roughness: 0.5,
+        metalness: 0.0
       });
     } catch (error) {
       console.error('Error setting up sun texture:', error);
       // Fallback material
-      sunMaterial = new THREE.MeshBasicMaterial({
+      sunMaterial = new THREE.MeshStandardMaterial({
         color: 0xFFA500,
         emissive: 0xFFA500,
-        emissiveIntensity: 1
+        emissiveIntensity: 1.2,
+        roughness: 0.5,
+        metalness: 0.0
       });
     }
   } else {
     // Fallback to basic material for low performance
-    sunMaterial = new THREE.MeshBasicMaterial({
+    sunMaterial = new THREE.MeshStandardMaterial({
       color: 0xFFA500,
       emissive: 0xFFA500,
-      emissiveIntensity: 1
+      emissiveIntensity: 1.2,
+      roughness: 0.5,
+      metalness: 0.0
     });
   }
 
@@ -1355,8 +1417,7 @@ const animate = () => {
       const corona = sun.children[2];
       // Update the viewVector uniform to create dynamic glow effect
       if (corona.material && corona.material.uniforms) {
-        const viewVector = new THREE.Vector3().subVectors(camera.position, corona.position);
-        corona.material.uniforms.viewVector.value = viewVector;
+        corona.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, corona.position);
 
         // Pulse the corona slightly
         const coronaPulse = Math.sin(time * 0.3) * 0.1 + 1;
@@ -1370,8 +1431,7 @@ const animate = () => {
       if (child.material && child.material.type === 'ShaderMaterial' && !child.userData?.isHighlight) {
         // Update the viewVector uniform if it exists
         if (child.material.uniforms && child.material.uniforms.viewVector) {
-          const viewVector = new THREE.Vector3().subVectors(camera.position, child.position);
-          child.material.uniforms.viewVector.value = viewVector;
+          child.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, child.position);
         }
 
         // Add subtle pulsing to the glow
@@ -1460,8 +1520,7 @@ const animate = () => {
 
             // Update viewVector for shader-based highlights
             if (child.material && child.material.uniforms && child.material.uniforms.viewVector) {
-              const viewVector = new THREE.Vector3().subVectors(camera.position, child.position);
-              child.material.uniforms.viewVector.value = viewVector;
+              child.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, child.position);
             }
           }
         }
@@ -1718,6 +1777,10 @@ onBeforeUnmount(() => {
   padding: 20px;
   overflow-y: auto;
   max-height: calc(80vh - 60px);
+}
+
+.info-panel-content::-webkit-scrollbar {
+  display: none;
 }
 
 /* Planet Content Styles */
