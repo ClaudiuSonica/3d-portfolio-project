@@ -281,11 +281,11 @@
             </div>
             <div class="contact-item">
               <strong>LinkedIn:</strong>
-              <a href="https://www.linkedin.com/in/claudiu-sonica-395aab218/" target="_blank">Claudiu Sonica</a>
+              <a href="https://www.linkedin.com/in/claudiu-sonica-395aab218/" target="_blank"> Claudiu Sonica</a>
             </div>
             <div class="contact-item">
               <strong>GitHub:</strong>
-              <a href="https://github.com/ClaudiuSonica" target="_blank">ClaudiuSonica</a>
+              <a href="https://github.com/ClaudiuSonica" target="_blank"> ClaudiuSonica</a>
             </div>
           </div>
         </div>
