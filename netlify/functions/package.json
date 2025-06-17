@@ -1,9 +1,0 @@
-{
-  "name": "netlify-functions",
-  "version": "1.0.0",
-  "description": "Netlify Functions for 3D Portfolio",
-  "main": "index.js",
-  "dependencies": {
-    "@getbrevo/brevo": "^1.0.1"
-  }
-}
