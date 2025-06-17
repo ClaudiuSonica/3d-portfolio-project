@@ -111,20 +111,33 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
 
   try {
-    // Simulate API call with a delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    console.log('Form submitted:', {
-      name: name.value,
-      email: email.value,
-      message: message.value,
+    // Call the Netlify function to send the email
+    const response = await fetch('/.netlify/functions/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        message: message.value,
+      }),
     });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to send message');
+    }
+
+    console.log('Email sent successfully:', data);
 
     // Show success message
     formSubmitted.value = true;
   } catch (error) {
     console.error('Error submitting form:', error);
-    // Could add error handling here
+    // Could add error handling here (e.g., show error message to user)
+    alert('Failed to send message. Please try again later.');
   } finally {
     isSubmitting.value = false;
   }
