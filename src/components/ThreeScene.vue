@@ -207,38 +207,49 @@
           <h3>Work Experience</h3>
           <div class="experience-timeline">
             <div class="experience-item">
-              <div class="experience-date">2022 - Present</div>
-              <div class="experience-details">
-                <h4>Senior Full Stack Developer</h4>
-                <p class="experience-company">Tech Innovations Inc.</p>
-                <ul>
-                  <li>Lead development of enterprise web applications</li>
-                  <li>Architect scalable backend solutions</li>
-                  <li>Mentor junior developers</li>
-                </ul>
-              </div>
-            </div>
-            <div class="experience-item">
-              <div class="experience-date">2020 - 2022</div>
+              <div class="experience-date">2024 (APR) - PRESENT</div>
               <div class="experience-details">
                 <h4>Full Stack Developer</h4>
-                <p class="experience-company">Digital Solutions Ltd.</p>
+                <p class="experience-company">Freelancer</p>
                 <ul>
-                  <li>Developed responsive web applications</li>
-                  <li>Implemented RESTful APIs</li>
-                  <li>Optimized database performance</li>
+                  <li>Designed and implemented arhitectural projects for different CRMs.</li>
+                  <li>Optimized overall database schemes for improved speed, security and flexibility.</li>
+                  <li>Implemented external APIs and developed internal ones for better data integration.</li>
                 </ul>
               </div>
             </div>
             <div class="experience-item">
-              <div class="experience-date">2018 - 2020</div>
+              <div class="experience-date">2024 (JAN) - 2024 (APR)</div>
               <div class="experience-details">
-                <h4>Frontend Developer</h4>
-                <p class="experience-company">Creative Web Agency</p>
+                <h4>Junior Full Stack Developer</h4>
+                <p class="experience-company">Materom</p>
                 <ul>
-                  <li>Created interactive user interfaces</li>
-                  <li>Implemented responsive designs</li>
-                  <li>Collaborated with design team</li>
+                  <li>Implemented dashboard for real time data.</li>
+                  <li>Refactored legacy code to use Vue 3 and Laravel 10.</li>
+                  <li>Optimized database queries for better performance.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="experience-date">2023 (OCT) - 2023 (DEC)</div>
+              <div class="experience-details">
+                <h4>Intern Front End Developer</h4>
+                <p class="experience-company">Ddroidd</p>
+                <ul>
+                  <li>Worked on a platform for managing the courses available on the firm network.</li>
+                  <li>Implemented RESTful APIs for management of courses and lessons.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="experience-date">2021 - 2023</div>
+              <div class="experience-details">
+                <h4>Volunteer Frontend Developer</h4>
+                <p class="experience-company">Asociația pentru Oportunități și cariere</p>
+                <ul>
+                  <li>I've implemented figma designs</li>
+                  <li>Worked close to other volunteers for finding propper solutions</li>
+                  <li>Collaborated with scrappers team</li>
                 </ul>
               </div>
             </div>
@@ -266,7 +277,7 @@
 
           <div class="contact-info">
             <div class="contact-item">
-              <strong>Email:</strong> contact@example.com
+              <strong>Email:</strong> csonica95@gmail.com
             </div>
             <div class="contact-item">
               <strong>LinkedIn:</strong>
